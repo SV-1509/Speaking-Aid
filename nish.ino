@@ -1,71 +1,71 @@
 
+#include "SD.h"
+#define SD_ChipSelectPin 10
+#include "TMRpcm.h"
+#include "SPI.h"
 
+TMRpcm tmrpcm;
 void setup() {
+  pinMode(10,OUTPUT);
+  digitalWrite(10, HIGH);
   // put your setup code here, to run once:
+  tmrpcm.speakerPin = 9;
+  //SPI.begin();
+Serial.begin(9600);
+if (!SD.begin(SD_ChipSelectPin)) 
+{
+Serial.println("SD fail");
+return;
+tmrpcm.setVolume(10);
+}
+
+tmrpcm.setVolume(6);
 pinMode(2,INPUT);
 pinMode(3,INPUT);
 pinMode(4,INPUT);
 pinMode(5,INPUT);
 pinMode(6,INPUT);
 pinMode(7,INPUT);
-pinMode(8,INPUT);
-pinMode(9,INPUT);
-pinMode(10,INPUT);
-Serial.begin(9600);
+pinMode(16,INPUT);
+pinMode(15,INPUT);
+pinMode(14,INPUT);
+
 }
 void tune1()
 {
-   tone(11, 300, 200);
-  delay(200);
-  noTone(11);
+   tmrpcm.play("1.wav");
   }
   void tune2()
 {
-  tone(11, 600, 200);
-  delay(200);
-  noTone(11);
+ tmrpcm.play("2.wav");
   }
   void tune3()
 {
-  tone(11,900, 200);
-  delay(200);
-  noTone(11);
+ tmrpcm.play("3.wav");
   }
   void tune4()
 {
-  tone(11, 1200, 200);
-  delay(200);
-  noTone(11);
+  tmrpcm.play("4.wav");
   }
   void tune5()
 {
-  tone(11, 1500, 200);
-  delay(200);
-  noTone(11);
+  tmrpcm.play("5.wav");
   }
   void tune6()
 {
-  tone(11, 1800, 200);
-  delay(200);
-  noTone(11);
+  tmrpcm.play("6.wav");
   }
   void tune7()
 {
-  tone(11, 2100, 200);
-  delay(200);
-  noTone(11);
+ tmrpcm.play("7.wav");
   }
   void tune8()
 {
-  tone(11, 2400, 200);
-  delay(200);
-  noTone(11);
+tmrpcm.play("8.wav");
   }
   void tune9()
 {
-  tone(11, 2700, 200);
-  delay(200);
-  noTone(11);
+  tmrpcm.play("9.wav");
   }
 void loop() {
   // put your main code here, to run repeatedly:
@@ -99,17 +99,17 @@ else if(digitalRead(7)==1)
     tune6();
     Serial.println('6');
     }
- else if(digitalRead(8)==1)
+ else if(digitalRead(16)==1)
   {
     tune7();
     Serial.println('7');
     }
- else if(digitalRead(9)==1)
+ else if(digitalRead(15)==1)
   {
     tune8();
     Serial.println('8');
     }
-else if(digitalRead(10)==1)
+else if(digitalRead(14)==1)
   {
     tune9();
     Serial.println('9');
