@@ -3,7 +3,7 @@ void setup() {
 pinMode(13, INPUT);
 pinMode(12, INPUT);
 pinMode(11, INPUT);
-pinMode(4, INPUT);
+pinMode(10, INPUT);
 Serial.begin(9600);
 }
 
@@ -42,7 +42,7 @@ else if(digitalRead(11)==1)
  
   Serial.println('2');
   }
-else if(digitalRead(4)==1)
+else if(digitalRead(10)==1)
   {
  // play a note on pin 6 for 200 ms:
   tone(6, 630, 100);
